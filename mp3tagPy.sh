@@ -35,7 +35,7 @@ if [ -f "$metapath$filename" ] ; then
 		
 else
 		
-	echo "********************************processing file $filename....";	
+	echo "********************************processing file $filename....";
 	#create new metadata file 
 	metanew="$metapath${name%.*}n.txt";
 	#write new metadata
@@ -57,7 +57,8 @@ else
 	else
 		ffmpeg  -i "$1" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" -y;
 	fi
+	rm   "$metanew";
 fi
 
-rm   "$metanew";
+
 
