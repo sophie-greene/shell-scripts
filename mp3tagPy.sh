@@ -19,6 +19,9 @@ temp=$(exiftool -year "$1" | sed -e 's/  [ \t]\?//g') ;
 year="${temp##*:}"
 echo	"$title $artist $album $genre $date $year" ;
 name="${1##*/}";
+
+ext="$(echo '${1##*.}'| tr -d '[[:space:]]')";
+
 filename="$(echo "$artist" | sed -e's/[^a-zA-Z0-9]//g')-$(echo "$title" | sed -e's/[^a-zA-Z0-9]//g').mp3"
 if [ -z "$title" ] ; then
 	if [ -z "$artist" ] ; then 
@@ -46,11 +49,15 @@ else
 	echo "Year= $year">>"$metanew";
 	echo "new metadata file created.......";
 	tempn="$metapath$name.mp3";
+	if [ "$ext" -eq "m4a" ] ; then
 
-
-	ffmpeg -loglevel panic -i "$1"  -y -map_metadata -1 -map 0:0 -codec:a libmp3lame -q:a 2 "$tempn";
-	ffmpeg  -i "$tempn" -i "$metanew" -map_metadata 1 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" -y;
-	rm "$tempn";
-	rm "$metanew";
+		ffmpeg -loglevel panic -i "$1"  -y -map_metadata -1 -map 0:0 -codec:a libmp3lame -q:a 2 "$tempn";
+		ffmpeg  -i "$tempn" -i "$metanew" -map_metadata 1 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" -y;
+		rm "$tempn";
+	else
+		ffmpeg  -i "$1" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" -y;
+	fi
 fi
+
+rm   "$metanew";
 
