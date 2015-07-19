@@ -35,7 +35,7 @@ if [ -f "$metapath$filename" ] ; then
 		
 else
 		
-	echo "********************************processing file $filename....";	;;;
+	echo "********************************processing file $filename....";
 	#create new metadata file 
 	metanew="$metapath${name%.*}n.txt";
 	#write new metadata
