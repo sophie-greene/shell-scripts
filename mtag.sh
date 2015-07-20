@@ -30,7 +30,10 @@ writeffmpeg ()
 	ffmpeg  -i "$(echo "$f1")" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$1$filename" -n;
 	rm "$metanew";
 }
-f1="$1";
+name="${1##*/}";
+path="${1%/*}";
+f1="$path/$(echo "$name" | sed -e 's/[^a-zA-Z0-9\/.]//g')";
+mv "$1" "$f1";
 metapath="$2";
 name="${f1##*/}";
 p="$(echo "${name:0:2}" | sed -e 's/[^._]//g')";
@@ -81,10 +84,15 @@ else
 		echo "genre  not available";
 		if [ -f "/media/sf_ubuntu/genre/$filename" ] ; then 
 				 echo  ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in /media/sf_ubuntu/genre/";
-				echo "removing orgional file $f1";
+				#echo "removing orgional file $f1";
 				rm "$f1";
 		else
+			if [ -z "$artist" ] ; then
+				echo "useless";
+				rm "$f1";
+			else
 				writeffmpeg "/media/sf_ubuntu/genre/";
+			fi
 				
 		fi
 
@@ -111,5 +119,6 @@ else
 
 fi
 
-
+rm "$f1"
+rm "$1"
 

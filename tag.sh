@@ -24,15 +24,17 @@ writeffmpeg ()
 		#if [ "$filetype" == "*$s*" ] ; then
 			#echo "==============processing "$filetype" file =============";
 		
-		ffmpeg  -i "$(echo "$f1")" -map_metadata -1 -map 0:0 -c:a libmp3lame -q:a 2 -id3v2_version 3 -f mp3 "$tempn" ;
+		ffmpeg   -i "$(echo "$f1")" -map_metadata -1 -map 0:0 -c:a libmp3lame -q:a 2 -id3v2_version 3 -f mp3 "$tempn" ;
 		ffmpeg -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$1$filename" -y;
 		rm   "$metanew";
 		rm "$tempn";
 }
-
-f1="$1";
+name="${1##*/}";
+path="${1%/*}";
+f1="$path/$(echo "$name" | sed -e 's/[^a-zA-Z0-9\/.]//g')";
+mv "$1" "$f1";
 metapath="$2";
-name="${f1##*/}";
+#echo "$f1";
 p="$(echo "${name:0:2}" | sed -e 's/[^._]//g')";
 
 if  [  -n "$p"  ]; then
@@ -77,9 +79,15 @@ else
 				 echo  ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in /media/sf_ubuntu/genre/";
 				echo "removing orgional file $f1";
 				rm "$f1";
-						else
+		else
+			if [ -z "$artist" ] ; then
+				echo "useless $f1";
+				rm "$f1" ;
+			else
 				writeffmpeg "/media/sf_ubuntu/genre/";
 				
+			fi
+			#rm "$f1";	
 		fi
 
 
@@ -102,4 +110,5 @@ else
 
 
 fi
-
+rm "$f1"
+rm "$1"
