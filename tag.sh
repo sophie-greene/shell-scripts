@@ -1,4 +1,34 @@
 #!/bin/bash
+writeffmpeg ()
+{
+	echo "path ****************** "$1"....";
+		#create new metadata file 
+		metanew="$1$filename.txt";
+		#write new metadata
+
+		echo ";FFMETADATA1">"$metanew";
+		echo "Title=$title">>"$metanew";
+		echo "Artist=$artist">>"$metanew";
+		echo "Album=$album">>"$metanew";
+		echo "Genre=$genre">>"$metanew";
+		echo "Date=$date">>"$metanew";
+		echo "Year=$date">>"$metanew";
+		if [ -z "$date" ] ; then echo "Year= $year">>"$metanew"; echo "Date= $year">>"$metanew";fi
+		#echo "File_type= $filetype">>"$metanew";
+		echo "Encoded_by=Sophie Greene">>"$metanew";
+		echo "TSSE=Sophie Greene">>"$metanew";
+		#echo "new metadata file created.......";
+		tempn="$1$filename.mp3";
+		s="M4A";
+		d="MP3";
+		#if [ "$filetype" == "*$s*" ] ; then
+			#echo "==============processing "$filetype" file =============";
+		
+		ffmpeg  -i "$(echo "$f1")" -map_metadata -1 -map 0:0 -c:a libmp3lame -q:a 2 -id3v2_version 3 -f mp3 "$tempn" ;
+		ffmpeg -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$1$filename" -y;
+		rm   "$metanew";
+		rm "$tempn";
+}
 
 f1="$1";
 metapath="$2";
@@ -11,21 +41,18 @@ if  [  -n "$p"  ]; then
 else
 	
 	#echo "extracting meta data from ..................."$f1"........................";
-
-	temp=$(exiftool -title "$f1" | sed -e 's/  [ \t]\?//g');
-	title="${temp##*:}"
-	temp=$(exiftool -artist "$f1" | sed -e 's/  [ \t]\?//g') ;
-	artist="${temp##*:}"
-	temp=$(exiftool -album "$f1" | sed -e 's/  [ \t]\?//g') ;
-	album="${temp##*:}"
-	temp=$(exiftool -genre "$f1" | sed -e 's/  [ \t]\?//g') ;
-	genre="${temp##*:}"
-	temp=$(exiftool -date "$f1" | sed -e 's/  [ \t]\?//g') ;
-	date="${temp##*:}"
-	temp=$(exiftool -year "$f1" | sed -e 's/  [ \t]\?//g') ;
-	year="${temp##*:}"
-	temp=$(exiftool -filetype "$f1" | tr -d '[[:space:]]') ;
-	filetype="${temp##*:}";
+	title=$(faad -i "$f1" 2>&1 | grep '^title: ' | sed 's/^title: //');
+	
+	artist=$(faad -i "$f1" 2>&1 | grep '^artist: ' | sed 's/^artist: //');
+	album=$(faad -i "$f1" 2>&1 | grep '^album: ' | sed 's/^album: //');
+	
+	genre=$(faad -i "$f1" 2>&1 | grep '^genre: ' | sed 's/^genre: //' | tr -d '[[:space:]]');
+	
+	date=$(faad -i "$f1" 2>&1 | grep '^date: ' | sed 's/^date: //');
+	
+	year=$(faad -i "$f1" 2>&1 | grep '^year: ' | sed 's/^year: //');
+	
+	filetype=$(faad -i "$f1" 2>&1 | grep '^filetype: ' | sed 's/^filetype: //');
 	
 	#echo	"$title $artist $album $genre $date $year $filetype" ;
 	
@@ -40,51 +67,37 @@ else
 
 	if [ -f "$metapath$filename" ] ; then 
 		echo ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in $metapath";
-
+		echo "removing orgional file $f1";
+		rm "$f1";
 		
 	elif [ -z "$genre" ] ; then
 
 		echo "genre  not available";
+		if [ -f "/media/sf_ubuntu/genre/$filename" ] ; then 
+				 echo  ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in /media/sf_ubuntu/genre/";
+				echo "removing orgional file $f1";
+				rm "$f1";
+						else
+				writeffmpeg "/media/sf_ubuntu/genre/";
+				
+		fi
+
 
 	elif [ "$genre" == "None" ] ; then 
 
 		echo "genre  not available None";
+		if [ -f "/media/sf_ubuntu/genre/$filename" ] ; then 
+				 echo  ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in /media/sf_ubuntu/genre/";
+				echo "removing orgional file $f1";
+				rm "$f1";
+		else
+				writeffmpeg "/media/sf_ubuntu/genre/";
+				
+		fi
+
 	else
-		
-		#echo "********************************processing file "$filename"....";
-		#create new metadata file 
-		metanew="$metapath$filename.txt";
-		#write new metadata
-
-		echo ";FFMETADATA1">"$metanew";
-		echo "Title= $title">>"$metanew";
-		echo "Artist= $artist">>"$metanew";
-		echo "Album= $album">>"$metanew";
-		echo "Genre= $genre">>"$metanew";
-		echo "Date= $date">>"$metanew";
-		echo "Year= $date">>"$metanew";
-		if [ -z "$date" ] ; then echo "Year= $year">>"$metanew"; echo "Date= $year">>"$metanew";fi
-		#echo "File_type= $filetype">>"$metanew";
-		echo "Encoded_by= Sophie Greene">>"$metanew";
-		echo "TSSE= Sophie Greene">>"$metanew";
-		#echo "new metadata file created.......";
-		tempn="$metapath$filename.mp3";
-		s="M4A";
-		d="MP3";
-		#if [ "$filetype" == "*$s*" ] ; then
-			#echo "==============processing "$filetype" file =============";
-		
-		ffmpeg -loglevel panic  -i "$(echo "$f1")" -map_metadata -1 -map 0:0 -c:a libmp3lame -q:a 2 -id3v2_version 3 -f mp3 "$tempn" ;
-		ffmpeg -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" ;
-		
-
+			writeffmpeg "$metapath";
 	
-		#elif [ "$filetype" == "$d" ]; then
-			#echo "%%%%%%%%%%%%%%%%%%%%%%processing mp3 file%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ";
-			#ffmpeg  -i "$f1" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" -y;
-		#fi
-		rm   "$metanew";
-		rm "$tempn";
 	fi
 
 

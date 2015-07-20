@@ -11,4 +11,13 @@ elif [ "$genre" == "None" ] ; then
 else 
 	echo "genre is $genre in $1";
 fi
+#delete lines from file from 11th line onwards
+#sed '11,$ d'
+#replace first occurance of ._ space
+# sed s/._/ /
+#all occcurances add g
+# sed s/._/ /g
+# delete we add d
+#sed '/#.*/ d'
+
 
