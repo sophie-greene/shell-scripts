@@ -1,6 +1,7 @@
 #!/bin/bash
-metapath="/media/sf_ubuntu/mp3/";
+
 f1="$1";
+metapath="$2";
 name="${f1##*/}";
 p="$(echo "${name:0:2}" | sed -e 's/[^._]//g')";
 
@@ -25,6 +26,7 @@ else
 	year="${temp##*:}"
 	temp=$(exiftool -filetype "$f1" | tr -d '[[:space:]]') ;
 	filetype="${temp##*:}";
+	
 	#echo	"$title $artist $album $genre $date $year $filetype" ;
 	
 	filename="$(echo "$artist" | sed -e 's/[^a-zA-Z0-9]//g')-$(echo "$title" | sed -e 's/[^a-zA-Z0-9]//g').mp3";
@@ -37,14 +39,21 @@ else
 	fi
 
 	if [ -f "$metapath$filename" ] ; then 
-		echo "";# ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in $metapath";
+		echo ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in $metapath";
 
 		
+	elif [ -z "$genre" ] ; then
+
+		echo "genre  not available";
+
+	elif [ "$genre" == "None" ] ; then 
+
+		echo "genre  not available None";
 	else
 		
 		#echo "********************************processing file "$filename"....";
 		#create new metadata file 
-		metanew="$(echo "$metapath${filename%.*}" | sed -e 's/[^a-zA-Z0-9]//g').txt";
+		metanew="$metapath$filename.txt";
 		#write new metadata
 
 		echo ";FFMETADATA1">"$metanew";
@@ -55,7 +64,7 @@ else
 		echo "Date= $date">>"$metanew";
 		echo "Year= $date">>"$metanew";
 		if [ -z "$date" ] ; then echo "Year= $year">>"$metanew"; echo "Date= $year">>"$metanew";fi
-		echo "File_type= $filetype">>"$metanew";
+		#echo "File_type= $filetype">>"$metanew";
 		echo "Encoded_by= Sophie Greene">>"$metanew";
 		echo "TSSE= Sophie Greene">>"$metanew";
 		#echo "new metadata file created.......";
@@ -65,15 +74,17 @@ else
 		#if [ "$filetype" == "*$s*" ] ; then
 			#echo "==============processing "$filetype" file =============";
 		
-		ffmpeg  -i "$(echo "$f1")" -map_metadata -1 -map 0:0 -c:a libmp3lame -q:a 2 -id3v2_version 3 -f mp3 "$tempn" ;
+		ffmpeg -loglevel panic  -i "$(echo "$f1")" -map_metadata -1 -map 0:0 -c:a libmp3lame -q:a 2 -id3v2_version 3 -f mp3 "$tempn" ;
 		ffmpeg -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" ;
-			#rm "$tempn";
+		
+
 	
 		#elif [ "$filetype" == "$d" ]; then
 			#echo "%%%%%%%%%%%%%%%%%%%%%%processing mp3 file%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ";
 			#ffmpeg  -i "$f1" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$metapath$filename" -y;
 		#fi
 		rm   "$metanew";
+		rm "$tempn";
 	fi
 
 
