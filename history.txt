@@ -1,0 +1,581 @@
+    1  sudo apt-get update
+    2  sudo apt-get upgrade
+    3  sudo reboot
+    4  sudo apt-get youtube
+    5  sudo apt-get youtube-dl
+    6  sudo apt-get install youtube-dl
+    7  sudo apt-get -y remove ffmpeg x264 libav-tools libvpx-dev libx264-dev
+    8  sudo apt-get update
+    9  sudo apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev   libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libtheora-dev     libvorbis-dev pkg-config texi2html yasm zlib1g-dev
+   10  # Install x264
+   11  sudo apt-get -y install libx264-dev
+   12  pwd
+   13  cd Downloads/
+   14  mv install_ffmpeg_ubuntu.sh ~
+   15  cd ..
+   16  ls
+   17  chmod 755 install_ffmpeg_ubuntu.sh 
+   18  ./install_ffmpeg_ubuntu.sh 
+   19  ls
+   20  ffmpeg -i Babybird\ -\ You\'re\ Gorgeous.mp4 -ab 160k -ac 2 -ar 44100 -vn you're\ Gorgeous.mp3
+   21  ffmpeg -i Babybird\ -\ You\'re\ Gorgeous.mp4 -ab 160k -ac 2 -ar 44100 -vn you'reGorgeous.mp3
+   22  ffmpeg -i Babybird\ -\ You\'re\ Gorgeous.mp4 -ab 160k -ac 2 -ar 44100 -vn yourGorgeous.mp3
+   23  ls
+   24  youtube-dl https://www.youtube.com/watch?v=MIQRZn-JvPs
+   25  youtube-dl https://www.youtube.com/watch?v=3GzpcN3vy_Q
+   26  youtube-dl https://www.youtube.com/watch?v=kcRpGpsFI5I
+   27  youtube-dl https://www.youtube.com/watch?v=kSDdADsSL2M
+   28  youtube-dl https://www.youtube.com/watch?v=YLnmHtS8hLc
+   29  youtube-dl https://www.youtube.com/watch?v=2Ou_dqDJCQU
+   30  sudo apt-get install picard
+   31  sudo apt-get install mp3tag
+   32  sudo apt-get install puddletag
+   33  cd /media/
+   34  ls
+   35  cd some
+   36  ls
+   37  cd VBOXADDITIONS_4.3.28_100309/
+   38  ls
+   39  ./runasroot.sh 
+   40  sudo ./runasroot.sh 
+   41  su -u
+   42  su -u root
+   43  su - root
+   44  ./runasroot.sh 
+   45  ls
+   46  sudo ./autorun.sh 
+   47  cd ~
+   48  clr
+   49  cl
+   50  cs
+   51  clear
+   52  find / -ifname win.txt
+   53  find / -iname win.txt
+   54  sudo find / -iname win.txt
+   55  sudo cp ~/yourGorgeous.mp3 /media/sf_ubuntu/
+   56  cd Catatonia-Mulder\ And\ Scully/
+   57  mv * *.mp3
+   58  rename * *.mp3
+   59  find . -name '*-GHBAG-*' -exec bash -c 'echo mv $0 ${0/GHBAG/stream-agg}' {} \;
+   60  find . -name * -exec bash -c 'echo mv $0 ${0.mp3}' {} \;
+   61  find . -name * -exec bash -c 'echo mv $0 $"0.mp3"' {} \;
+   62  find . -name * -exec bash -c 'mv $0 $"0.mp3"' {} \;
+   63  find . -name *.* -exec bash 'mv $0 $"0.mp3"' {} \;
+   64  ls
+   65  find . -name *.* -exec bash 'mv $0 $"0.mp3"' {} \;
+   66  find . -name *.* -exec bash 'echo $0' {} \;
+   67  find . -name "*" -exec bash 'echo $0' {} \;
+   68  -exec bash 'echo $0' {} \;
+   69  find . -name "0*" -exec bash 'echo $0' {} \;
+   70  find . -name "0*"
+   71  find . -iname "0*"
+   72  clear
+   73  find . -name "0*" -exec bash -c 'echo $0' {} \;
+   74  find . -name "*" -exec bash -c 'echo $0' {} \;
+   75  find . -name "*" -exec bash -c 'mv  $0 "$0.mp3"' {} \;
+   76  find . -name "*" -exec bash -c 'rename  $0 "$0.mp3"' {} \;
+   77  find . -name "*" -exec bash -c 'mv  $0 "$0.mp3"' {} \;
+   78  find . -name "*" -exec bash -c 'mv  $0 $0.mp3' {} \;
+   79  find . -name "*" -exec bash -c 'echo "$0.mp3"' {} \;
+   80  find /home/some/Catatonia-Mulder\ And\ Scully/ -name "*" -exec bash -c 'echo "$0.mp3"' {} \;
+   81  find /home/some/Catatonia-Mulder\ And\ Scully/ -name "*" -exec bash -c 'mv "$0" "$0.mp3"' {} \;
+   82  ls
+   83  rm Cover.jpg.mp3.mp3.mp3.mp3 
+   84  rm Downloaded\ from\ wWw.GloDLS.to.png.mp3 
+   85  ls
+   86  sudo cp ~/music/ /media/sf_ubuntu/
+   87  sudo cp ~/music/ /media/sf_ubuntu/music
+   88  sudo cp ~/music /media/sf_ubuntu/
+   89  sudo mv ~/music /media/sf_ubuntu/music
+   90  cd~
+   91  cd ~
+   92  ls
+   93  sudo chmod 440 /media/sf_ubuntu/
+   94  sudo chmod 755 /media/sf_ubuntu/
+   95  sudo ls /media/sf_ubuntu/
+   96  sudo ll /media/sf_ubuntu/
+   97  sudo ls  -l /media/sf_ubuntu/
+   98  sudo chmod 777 /media/sf_ubuntu/
+   99  sudo ls  -l /media/sf_ubuntu
+  100  sudo chmod 777 /media/sf_ubuntu
+  101  ls
+  102  sudo ls  -l /media/sf_ubuntu
+  103  sudo ls  -l /media/
+  104  sudo chmod -R ugo+rw /media/sf_ubuntu
+  105  sudo chmod  ugo+rw /media/sf_ubuntu
+  106  sudo chmod  ugo+rwx /media/sf_ubuntu
+  107  sudo chmod  ugo+rwx /media/sf_ubuntu/
+  108  sudo chmod  -R ugo+rwx /media/sf_ubuntu/
+  109  more /etc/group
+  110  useradd -G {vboxsf} some
+  111  groupadd vboxsf
+  112  sudo useradd -G {vboxs} some
+  113  sudo useradd -G {vboxsf} some
+  114  sudo useradd -G vboxsf some
+  115  who
+  116  sudo useradd -g vboxsf some
+  117  sudo groupadd -g vboxsf some
+  118  usermod -g vboxsf some
+  119  sudo usermod -g vboxsf some
+  120  sudo apt-get install system-config-users
+  121  sudo apt-get install system-config
+  122  sudo apt-get install system-config-*
+  123  sudo reboot
+  124  sudo yum apt-get update 
+  125  sudo apt-get update 
+  126  history | grep rm
+  127  history | grep find
+  128  find /home/some/Catatonia-Mulder\ And\ Scully/ -name "*" -exec bash -c 'mv "$0" "$0.mp3"' {} \;
+  129  find /media/some/SAMSUNG/soph/organised\ music/ -name "*(1)*" -exec bash -c 'rm "$0"' {} \;
+  130  find /media/some/SAMSUNG/soph/organised\ music/ -name "*(2)*" -exec bash -c 'rm "$0"' {} \;
+  131  find /media/some/SAMSUNG/soph/organised\ music/ -name "*(3)*" -exec bash -c 'rm "$0"' {} \;
+  132  find /media/some/SAMSUNG/soph/organised\ music/ -name "*(1)*" -exec bash -c 'rm "$0"' {} \;
+  133  cd /media/some/SAMSUNG/soph/organised\ music/
+  134  find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
+  135  NAME=`echo "$FILE" | cut -d'.' -f1`
+  136  EXTENSION=`echo "$FILE" | cut -d'.' -f2`
+  137  filename=$(basename "$fullfile")
+  138  extension="${filename##*.}"
+  139  filename="${filename%.*}"
+  140  gedit some.sh &&
+  141  gedit some.sh &
+  142  find /media/some/SAMSUNG/soph/organised\ music/ -name "*(1)*" -exec bash -c 'echo "$0"' {} \;
+  143  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo "$0"' {} \;
+  144  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo "${0%.*}"' {} \;
+  145  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo "basename ${0%.*}"' {} \;
+  146  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo basename "${0%.*}"' {} \;
+  147  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo 'basename "${0%.*}"'' {} \;
+  148  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo $1="${0%.*}";basename $1 ' {} \;
+  149  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c '$2=${0#.*} $1="${0%.*}";basename $1 .$2' {} \;
+  150  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c '$2=${0#.*} $1="${0%.*}";basename $1 $2' {} \;
+  151  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c '$2=.${0#.*} $1="${0%.*}";basename $1 $2' {} \;
+  152  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c '$2=.${0#.*} $1="${0%.*}";echo $1 $2' {} \;
+  153  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c '$2=${0#.*} $1="${0%.*}";echo  $2' {} \;
+  154  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo "${0%.*}";echo "${0#.*}"' {} \;
+  155  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo "${0%.*}";echo "ext ${0##.*}"' {} \;
+  156  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo "${0%.*}";echo "ext ${0#.*}"' {} \;
+  157  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'echo "${0%.*}";echo "ext ${0#*.}"' {} \;
+  158  chmod 755 some.sh
+  159  ./some.sh
+  160  chmod 755 some.sh
+  161  ./some.sh
+  162  sudo ./some.sh
+  163  ls
+  164  ls | grep some
+  165  ls -l | grep some
+  166  cd ~
+  167  ls some.sh 
+  168  ls -l some.sh 
+  169  chmod some.sh 
+  170  chmod 755 some.sh 
+  171  ./some.sh 
+  172  chmod 755 some.sh 
+  173  ./some.sh 
+  174  ls -l | grep some
+  175  ./some.sh 
+  176  ls /media/some/SAMSUNG/soph/organised\ music/ | grep "(1)"
+  177  ls /media/some/SAMSUNG/soph/organised\ music/ | grep "("
+  178  ls /media/some/SAMSUNG/soph/organised\ music/ | grep "(*)"
+  179  ls /media/some/SAMSUNG/soph/organised\ music/ | grep "(#)"
+  180  sudo apt-get install audacity
+  181  sudo at-get auto-remove
+  182  sudo apt-get auto-remove
+  183  sudo apt-get autoremove 
+  184  sudo apt-get install python-pip;sudo pip install mutagen
+  185  cd /media/some/SAMSUNG/soph/organised\ music/
+  186  mid3v2 
+  187  history | grep find
+  188  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c '$2=${0#.*} $1="${0%.*}";echo  $2' {} \;
+  189  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'mid3v2 -a "$0"' {} \;
+  190  find /media/some/SAMSUNG/soph/organised\ music/ -name "*" -exec bash -c 'mid3v2 -l "$0"' {} \;
+  191  cd /media/sf_ubuntu/
+  192  cd organised\ music/
+  193  find . -name "*(1)*" exec bash 'echo "$0"' {}\;
+  194  find . -name "*(1)*" exec bash 'echo "$0"' {} \;
+  195  history | grep find
+  196  find . -name "*(1)*" exec bash -c 'echo "$0"' {} \;
+  197  find . -name "*(1)*" -exec bash -c 'echo "$0"' {} \;
+  198  find . -name "*(1)*" -exec bash -c 'rm "$0"' {} \;
+  199  find . -name "*(2)*" -exec bash -c 'rm "$0"' {} \;
+  200  find . -name "*(3)*" -exec bash -c 'echo "$0"; rm "$0"' {} \;
+  201  find . -name "*(1)*" -exec bash -c 'echo "$0"; rm "$0"' {} \;
+  202  find . -name "*(1)" -exec bash -c 'echo "$0"; rm "$0"' {} \;
+  203  find . -name "*(1)*" -exec bash -c 'echo "$0"; rm "$0"' {} \;
+  204  sudo ./some.sh
+  205  find . -name "*(1)*" -exec bash -c 'echo "$0"; rm "$0"' {} \;
+  206  sudo ./some.sh
+  207  ./some.sh
+  208  cp  ~/some.sh .
+  209  eyeD3 --remove-all *.mp3
+  210  eyeD3 --remove-all *.m4a
+  211  sudo apt-get update
+  212  history 
+  213  ./meta.sh
+  214  ./meta.sh l.mp3
+  215  find / -name "*.mp3" -exec bash -c './meta.sh $0'{}\;
+  216  find / -name "*.mp3" -exec bash -c './meta.sh $0' {} \;
+  217  find /media/sf_ubuntu/organised\ music/ -name "*.mp3" -exec bash -c './meta.sh $0' {} \;
+  218  find / -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  219  find / -name "*.mp3" -exec bash -c './meta.sh $0' {} \;
+  220  find / -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  221  pwd
+  222  find / -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  223  find ~ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  224  ./meta.sh cant.mp3
+  225  clear
+  226  ./meta.sh cant.mp3
+  227  clear
+  228  ./meta.sh cant.mp3
+  229  pwd
+  230  ls
+  231  sudo update
+  232  sudo apt-get update
+  233  ./meta.sh cant.mp3
+  234  history 
+  235  find / -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  236  find / -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  237  find /media/some/SAMSUNG/ -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  238  find / -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  239  find /media/some/SAMSUNG/ -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  240  find /media/some/SAMSUNG/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  241  find /media/some/SAMSUNG/ -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  242  find ~ -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  243  find /home/some -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  244  sudo find /home/some -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  245  find /home/some/Downloads/ -name "*.m4a" -exec bash -c './meta.sh "$0"' {} \;
+  246  find /home/some/Downloads/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  247  cd /media/sf_ubuntu/mp3/
+  248  ffmpeg -i *
+  249  ffmpeg -i BrunoMars-TalkingtotheMoon.mp3 
+  250  find /media/some/SAMSUNG/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  251  find /media/some/SAMSUNG/backup/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  252  cd ~
+  253  find /media/some/SAMSUNG/backup/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  254  find /media/some/SAMSUNG/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  255  ./meta.sh cant.mp3
+  256  ./meta.sh ~/cant.mp3
+  257  history |grep ffmpeg32
+  258  history |grep ffmpeg
+  259  ./meta.sh ~/cant.mp3
+  260  find ~ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  261  ./meta.sh ~/cant.mp3
+  262  find ~ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  263  ./meta.sh ~/cant.mp3
+  264  mkdir /home/some/mp3
+  265  ./meta.sh ~/cant.mp3
+  266  sudo ./meta.sh cant.mp3 
+  267  find /media/some/SAMSUNG/soph/organised\ music/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  268  rm -R ~/mp3
+  269  find /media/some/SAMSUNG/soph/organised\ music/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  270  find /media/some/SAMSUNG/dbackup/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  271  foo=bar
+  272  echo "${foo^}"
+  273  find /media/some/SAMSUNG/dbackup/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  274  ./meta.sh cant.mp3
+  275  find /media/some/SAMSUNG/dbackup/ -name "*.mp3" -exec bash -c './meta.sh "$0"' {} \;
+  276  history | grep codec
+  277  find /media/some/SAMSUNG/dbackup/ -name "*.m4a" -exec bash -c './metam4a.sh "$0"' {} \;
+  278  chmod 755 metam4a.sh 
+  279  find /media/some/SAMSUNG/dbackup/ -name "*.m4a" -exec bash -c './metam4a.sh "$0"' {} \;
+  280  find /media/some/SAMSUNG/ -name "*.m4a" -exec bash -c './metam4a.sh "$0"' {} \;
+  281  find /media/some/SAMSUNG/* -name "*.m4a" -exec bash -c './metam4a.sh "$0"' {} \;
+  282  find /media/some/SAMSUNG/dbackup/ -name "*.m4a" -exec bash -c './metam4a.sh "$0"' {} \;
+  283  cp meta.sh mp3tag.sh
+  284  chmod 755 mp3tag.sh 
+  285  find  /home/some/ -name -exec bash -c './mp3tag.sh "$0"' {} \;
+  286  find  /home/some/ -name -exec bash -c './mp3tag.sh "$0"' {} \ ;
+  287  history | grep bash
+  288  find  /home/some/ -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \ ;
+  289  find  /home/some/ -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  290  find  /media/some/SAMSUNG/ -name "*.m4a" -exec bash -c './m4atag.sh "$0"' {} \;
+  291  find  /home/some/ -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  292  find  /home/some/Downloads/ -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  293  find  / -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  294  find  /home/some/ -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  295  find  /media/some/SAMSUNG/ -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  296  find  /media/some/SAMSUNG/ -name "*sheeran*.m4a" -exec bash -c './m4atag.sh "$0"' {} \;
+  297  find  /media/some/SAMSUNG/ -name "*ed*.m4a" -exec bash -c './m4atag.sh "$0"' {} \;
+  298  find  /media/some/SAMSUNG/ -name "*she*ran*.m4a" -exec bash -c './m4atag.sh "$0"' {} \;
+  299  find  /media/some/SAMSUNG/ -name "*she*ran*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  300  find  /media/some/SAMSUNG/ -name "*edd*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  301  find  /media/some/SAMSUNG/ -name "*sheeran*.mp3"
+  302  find  /media/some/SAMSUNG/ -name "*sheeran*"
+  303  find  /media/some/SAMSUNG/ -name "*sh*ran*"
+  304  cd /media/some/
+  305  ls
+  306  find  /media/sf_G_DRIVE/ -name "*.mp3" -exec bash -c './mp3tag.sh "$0"' {} \;
+  307  find  /media/some/SAMSUNG/ -name "*.m4a" -exec bash -c './m4atag.sh "$0"' {} \;
+  308  ls
+  309  mv *.sh /media/sf_ubuntu/
+  310  ls
+  311  rm *~
+  312  ls
+  313  cat met
+  314  cat cant
+  315  rm cant
+  316  ls
+  317  rm *.txt
+  318  mv ~/shell-scripts/m4atag.sh .
+  319  mv ~/shell-scripts/mp3tag.sh .
+  320  ls
+  321  cat met
+  322  rm met
+  323  ls mp3
+  324  rm -R mp3
+  325  ls
+  326  cat examples.desktop 
+  327  ls
+  328  cd shell-scripts/
+  329  ls
+  330  cp ~/m4atag.sh .
+  331  cp ~/mp3tag.sh .
+  332  chmod 755 m4atagPy.sh
+  333  ./m4atagPy.sh 
+  334  ./m4atagPy.sh /media/sf_ubuntu/mp3/5SecondsOfSummer-Amnesia.mp3 
+  335  ./m4atagPy.sh 
+  336  ./m4atagPy.sh /media/sf_ubuntu/mp3/5SecondsOfSummer-Amnesia.mp3 
+  337  cleaar
+  338  ./m4atagPy.sh /media/sf_ubuntu/mp3/5SecondsOfSummer-Amnesia.mp3 
+  339  cd shell-scripts/
+  340  ./m4atagPy.sh /media/sf_ubuntu/mp3/5SecondsOfSummer-Amnesia.mp3 
+  341  printenv
+  342  printenv| grep mp3
+  343  printenv
+  344  ./m4atagPy.sh /media/sf_ubuntu/mp3/5SecondsOfSummer-Amnesia.mp3 
+  345  cd shell-scripts/
+  346  git diff
+  347  ls
+  348  cat mp3tagPy.sh
+  349  history | grep exec
+  350  find  /media/sf_G_DRIVE/ -name "*.m4a" -exec bash -c './mp3tagPy.sh "$0"' {} \;
+  351  cd shell-scripts/
+  352  find  /media/sf_G_DRIVE/ -name "*.m4a" -exec bash -c './mp3tagPy.sh "$0"' {} \;
+  353  chmod 755 tag.sh
+  354  git add *
+  355  git 
+  356  git push origin master 
+  357  ./tag.sh file.txt 
+  358  ./tag.sh file1.txt 
+  359  find  /media/sf_G_DRIVE/ -name "*.m4a" -exec bash -c './mp3tagPy.sh "$0"' {} \;
+  360  find  /media/sf_G_DRIVE/ -name "*.m4a" |sort -r -exec bash -c './mp3tagPy.sh "$0"' {} \;
+  361  find -h
+  362  find --hel
+  363  find --help
+  364  find  /media/sf_G_DRIVE/ -name "*.m4a"
+  365  find  /media/sf_G_DRIVE/ -name "*.m4a" > file.txt
+  366  ./tag file.txt 
+  367  ls
+  368  ./tag.sh file.txt 
+  369  cat tag.sh
+  370  ./tag.sh file.txt 
+  371  find  /media/sf_G_DRIVE/ -name "*.m4a" -exec bash -c './mp3tagPy.sh "$0"' {} \;
+  372  cd shell-scripts/
+  373  find  /media/sf_G_DRIVE/ -name "*.m4a" -exec bash -c './mp3tagPy.sh "$0"' {} \;
+  374  sort -r file.txt file1.txt
+  375  sort -r file.txt >file1.txt
+  376  ./tag file1.txt 
+  377  ./tag.sh file1.txt 
+  378  sort --random-sort file.txt >file2.txt
+  379  ./tag.sh file2.txt 
+  380  sort --random-sort file.txt >file2.txt
+  381  ./tag.sh file2.txt 
+  382  sort --random-sort file.txt >file3.txt
+  383  sort --random-sort file3.txt >file4.txt
+  384  ./tag.sh file2.txt 
+  385  ./tag.sh file.txt 
+  386  ./tag.sh file2.txt 
+  387  exiftool /Music/kanye/Late Registration/09 Roses.m4a
+  388  exiftool "/Music/kanye/Late Registration/09 Roses.m4a"
+  389  exiftool "/media/sf_G_DRIVE/Music/kanye/Late Registration/09 Roses.m4a"
+  390  exiftool  "/media/sf_G_DRIVE/Music/Music/kanye/Late Registration/09 Roses.m4a"
+  391  rename --help
+  392  ./tag.sh file2.txt 
+  393  exiftool -type /media/sf_G_DRIVE/FLACTunes/Exodus.m4a
+  394  exiftool  /media/sf_G_DRIVE/FLACTunes/Exodus.m4a
+  395  exiftool  -filetype /media/sf_G_DRIVE/FLACTunes/Exodus.m4a
+  396  exiftool  -filetype /media/sf_G_DRIVE/FLACTunes/._Ruby.m4a
+  397  exiftool  -filetype /media/sf_G_DRIVE/FLACTunes/*
+  398  ./tag.sh file2.txt 
+  399  exiftool  -filetype /media/sf_G_DRIVE/FLACTunes/*
+  400  ./tag.sh file2.txt 
+  401  ./tag.sh file4.txt 
+  402  c
+  403  ./tag.sh file3.txt 
+  404  cd shell-scripts/
+  405  ./tag.sh file.txt 
+  406  cd shell-scripts/
+  407  ./tag.sh file4.txt 
+  408  ./tag.sh file1.txt 
+  409  ./tag.sh file3.txt 
+  410  history | grep sort
+  411  cd shell-scripts/
+  412  chmod 755 metam4a.sh 
+  413  sort --random-sort file.txt >file2.txt
+  414  sort --random-sort file.txt >file3.txt
+  415  sort --random-sort file3.txt >file4.txt
+  416  ./tag.sh file2.txt 
+  417  exiftool /media/sf_G_DRIVE/Music/Various.Artists/BRIT Awards 2014/1-15 Hold On, We're Going Home (feat. Majid Jordan).m4a
+  418  ;
+  419  exiftool "/media/sf_G_DRIVE/Music/Various.Artists/BRIT Awards 2014/1-15 Hold On, We're Going Home (feat. Majid Jordan).m4a"
+  420  ls
+  421  ls -i
+  422  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" |  sed -e 's/[^a-zA-Z0-9]//g' ' {} \;
+  423  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" |  sed -e 's/[^a-zA-Z0-9\/\.]//g' ' {} \;
+  424  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" |  sed -e 's/[^a-zA-Z0-9\/\.\ \-\_]//g' ' {} \;
+  425  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" |  sed -e 's/[^a-zA-Z0-9\/_-]//g' ' {} \;
+  426  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" |  sed -e 's/[^a-zA-Z0-9\/_-.]//g' ' {} \;
+  427  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" |  sed -e 's/[^a-zA-Z0-9\/_-. ]//g' ' {} \;
+  428  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" |  sed -e 's/[^a-zA-Z0-9\/_-.][[:space:]]//g' ' {} \;
+  429  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0##*/" |  sed -e 's/[^a-zA-Z0-9\/_-.][[:space:]]//g' ' {} \;
+  430  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9\/_-.][[:space:]]//g' ' {} \;
+  431  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'cp $0 "$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9]//g')"' {} \;
+  432  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'cp $0 "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9]//g')"' {} \;
+  433  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9]//g')"' {} \;
+  434  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9.]//g')"' {} \;
+  435  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'cp $0 "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9.]//g')"' {} \;
+  436  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo $0 "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  437  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'mv $0 "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  438  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'cp "$0" "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  439  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'mv "$0" "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  440  kkkkkkk
+  441  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" "${0%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  442  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" "${0%%/*}""$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  443  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'echo "$0" "${0%/*}"/"$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  444  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'mv "$0" "${0%/*}"/"$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9._-]//g')"' {} \;
+  445  find  /media/sf_G_DRIVE/ -name "*.m4a"  -exec bash -c 'mv "$0" "${0%/*}"/"$(echo "${0##*/}" |  sed -e 's/[^a-zA-Z0-9.-]//g')"' {} \;
+  446  find 
+  447  find  /media/sf_G_DRIVE/ -name "*.m4a" >file.txt
+  448  ./tag.sh file.txt 
+  449  ./tag.sh file3.txt 
+  450  cd shell-scripts/
+  451  ./tag.sh file.txt 
+  452  cd shell-scripts/
+  453  ./tag.sh file4.txt 
+  454  sort -r file4.txt>file5.txt
+  455  ./tag.sh file5.txt 
+  456  ./tag.sh file3.txt 
+  457  rm /media/sf_ubuntu/mp3/*.mp3.mp3
+  458  cd shell-scripts/
+  459  ./tag.sh file4.txt&
+  460  ./tag.sh file.txt&
+  461  cd shell-scripts/
+  462  ./tag.sh file.txt&
+  463  ./tag.sh file1.txt&
+  464  rm /media/sf_ubuntu/mp3/*.mp3.mp3
+  465  find  /media/some/SAMSUNG/ -name "*.m4a" >samsu.txt
+  466  cat samsu.txt 
+  467  ./tag file.txt 
+  468  rm /media/sf_ubuntu/mp3/*.mp3.mp3
+  469  cd shell-scripts/
+  470  ./tag.sh file5.txt 
+  471  rm /media/sf_ubuntu/mp3/*.mp3.mp3
+  472  find  /media/some/SAMSUNG/ -name "*.mp3" >samsump3.txt
+  473  find  /media/sf_G_DRIVE/ -name "*.mp3" >filemp3.txt
+  474  history | gre git
+  475  history | grep git
+  476  git add *
+  477  git commit -m "fixing text buggs"
+  478  rm 0*.txt
+  479  rm 1*.txt
+  480  git commit -m "fixing text buggs"
+  481  rm L*.txt
+  482  git commit -m "fixing text buggs"
+  483  ls
+  484  rm F*.txt
+  485  rm M*.txt
+  486  rm I*.txt
+  487  rm J*.txt
+  488  git commit -m "fixing text buggs"
+  489  ls
+  490  rm T*.txt
+  491  git commit -m "fixing text buggs"
+  492  git push
+  493  find  /home/some/Downloads/ -name "*.mp3" >home.txt
+  494  cat home.txt 
+  495  cp tag.sh mtag.sh
+  496  chmod 755 mtag.sh 
+  497  gedit mtag.sh&;
+  498  gedit mtag.sh & ;
+  499  gedit mtag.sh &
+  500  fg
+  501  git add *
+  502  ls
+  503  rm *.txt
+  504  ls
+  505  add git *
+  506  git add  *
+  507  git commit -m "fixing text buggs"
+  508  git push
+  509  rm /media/sf_ubuntu/mp3/*.mp3.mp3
+  510  mkdir /media/sf_ubuntu/sam
+  511  ls *.txt
+  512  temp=$(exiftool -genre "$f1" | sed -e 's/  [ \t]\?//g') ;
+  513  find /media/sf_ubuntu/mp3 -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  514  find /media/sf_ubuntu/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  515  find /media/sf_ubuntu/mp3soph/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  516  find /media/sf_ubuntu/samsoph/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  517  find /media/sf_ubuntu/sam/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  518  git add *
+  519  git commit -m "fixed empty genre"
+  520  rm *.txt
+  521  git commit -m "fixed empty genre"
+  522  ls
+  523  delete *.mp3
+  524  rm *.mp3
+  525  git commit -m "fixed empty genre"
+  526  history | grep master
+  527  git push origin master 
+  528  ls
+  529* find / -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  530  ./convertOgg.sh ~/01\ Rolling\ In\ the\ Deep.m4a 
+  531  sudo apt-get install faad
+  532  sudo apt-get install oggenc
+  533  ./convertOgg.sh ~/01\ Rolling\ In\ the\ Deep.m4a 
+  534  ./convertOgg.sh ~/cant.mp3 
+  535  eyeD3 ~/cant.mp3 
+  536  eyeD3 -genre ~/cant.mp3 
+  537  eyeD3 --genre ~/cant.mp3 
+  538  eyeD3 -i "$f1" 2>&1 | grep '^title: ' | sed 's/^title: //'
+  539  eyeD3 -i "$f1" 2>&1 | grep '^title: ' | sed 's/^title: //';
+  540  eyeD3 -i "$f1" 2>&1 | grep 'title: ' | sed 's/title: //';
+  541  eyeD3 -i "$f1" 2>&1 | grep 'title: ' | sed 's/title: //'
+  542  eyeD3 -i "$f1" 2>&1 | grep 'title: '
+  543  eyeD3 -i "$f1"  | grep 'title: '
+  544  title=$(faad -i "~/cant.mp3" 2>&1 | grep '^title: ' | sed 's/^title: //')
+  545  title=$(faad -i "~/cant.mp3" 2>&1 | grep 'title:' | sed 's/title://')
+  546  eyeD3 ~/cant.mp3 | grep artist 
+  547  eyeD3 -l ~/cant.mp3 | grep artist 
+  548  eyeD3 -h
+  549  eyeD3 -a ~/cant.mp3 
+  550  mp3info -p %a ~/cant.mp3 
+  551  chmod 755 stripmeta.sh 
+  552  cd /media/some/SAMSUNG/
+  553  cd ~/shell-scripts/
+  554  ./stripmeta.sh /home/some/Downloads/
+  555  cd ~/shell-scripts/
+  556  ./stripmeta.sh /home/some/Downloads/
+  557  ./stripmeta.sh
+  558  cp convertOgg.sh ~/Downloads/andy/
+  559  cd ~/Downloads/andy/
+  560  cp ~/shell-scripts/stripmeta.sh ~/Downloads/andy/
+  561  ./stripmeta.sh 
+  562* h
+  563  exiftool ~/cant.mp3 
+  564  cd ~/shell-scripts/
+  565  history | grep master
+  566  ls
+  567  git commit -m "write moved to function and test for empty genre"
+  568  history | grep master
+  569  git push origin master 
+  570  history | grep test
+  571  find /media/sf_ubuntu/mp3soph/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  572  find /media/sf_ubuntu/mp3/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  573  find /media/sf_ubuntu/sam/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  574  find /media/sf_ubuntu/samsoph/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  575  find /media/sf_ubuntu/mp3soph/ -name "*.mp3" -exec bash -c './test.sh "$0"' {} \;
+  576  git commit -m "write moved to function and test for empty genre"
+  577  git add *
+  578  ls
+  579  git commit -m "write moved to function and test for empty genre"
+  580  git push origin master 
+  581  history >history.txt
