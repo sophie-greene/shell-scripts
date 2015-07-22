@@ -1,8 +1,0 @@
-;FFMETADATA1
-Title=  Don't Let Me Be the Last to Know
-Artist=  Britney Spears
-Album=  The Greatest
-Genre= 
-Date= 
-Year=  2007
-FileType=  2007

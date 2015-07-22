@@ -1,94 +1,111 @@
 #!/bin/bash
 
-writeffmpeg ()
-{
-	echo "********************************processing file "$filename"....";
-	#create new metadata file 
-	metanew="$1$filename.txt";
-	#write new metadata
+writeffmpeg(){
+	if [ -f "$metapath$filename" ] ; then 
+		echo ">>>>>>>>>>>>>>>>>>>>>> file $filename already exists in $metapath"
+		#echo "removing .........$1"
+		#rm "$1"
+		
+	else
+		echo "writing ..... "$1".... to ...."$metapath$filename" ...";
+		#create new metadata file 
+		metanew="$metapath$filename.txt";
+		tempn="$metapath$filename.mp3";
+		#write new metadata
 
-	echo ";FFMETADATA1">"$metanew";
-	echo "Title=$title">>"$metanew";
-	echo "Artist=$artist">>"$metanew";
-	echo "Album=$album">>"$metanew";
-	echo "Genre=$genre">>"$metanew";
-	echo "Date=$date">>"$metanew";
-	echo "Year=$date">>"$metanew";
-	if [ -z "$date" ] ; then 
-		echo "Year=$year">>"$metanew"; 
-		echo "Date=$year">>"$metanew";
+		echo ";FFMETADATA1">"$metanew";
+		echo "Title=$title">>"$metanew";
+		echo "Artist=$artist">>"$metanew";
+		echo "Album=$album">>"$metanew";
+		echo "Genre=$genre">>"$metanew";
+
+		d="$(echo "$date" | tr -d '[[:space:]]')"
+		y="$(echo "$year" | tr -d '[[:space:]]')"
+		#if [ -z "$d"  ] ; then  
+		#	echo "Year= $year">>"$metanew"; 
+		#	echo "TYER= $year">>"$metanew"; 			
+		#	echo "Date= $year">>"$metanew";
+		#elif [ -z "$y" ] ; then	
+		#	echo "Year= $date">>"$metanew"; 
+		#	echo "TYER= $date">>"$metanew"; 			
+		#	echo "Date= $date">>"$metanew";
+		#else
+			echo "Year= $year">>"$metanew"; 
+			echo "TYER= $date">>"$metanew"; 			
+			echo "Date= $date">>"$metanew";
+		#fi
+		
+		echo "TSSE=Sophie Greene">>"$metanew";
+		#echo "new metadata file created.......";
+		ffmpeg   -i "$1" -map_metadata -1 -map 0:0 -c:a copy -id3v2_version 3 -f mp3 "$tempn" ;
+		ffmpeg -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy  -id3v2_version 3 -write_id3v1 1 "$metapath$filename" -y;
+		rm   "$metanew";
+		rm "$tempn";
+		
 	fi
-	echo "Encoded_by=Sophie Greene">>"$metanew";
-	echo "TSSE= Sophie Greene">>"$metanew";
-	
-	tempn="$1$filename.mp3";
-	s="M4A";
-	d="MP3";
-	#if [ "$filetype" == "*$s*" ] ; then
-		#echo "==============processing "$filetype" file =============";
-	
-	ffmpeg  -i "$(echo "$f1")" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy -id3v2_version 3 -write_id3v1 1 "$1$filename" -n;
-	rm "$metanew";
 }
+removespace (){
+	FOO="$1"
+	FOO_NO_TRAIL_SPACE="$(echo -e "${FOO}" | sed -e 's/[[:space:]]*$//')"
+	#echo -e "FOO_NO_TRAIL_SPACE='${FOO_NO_TRAIL_SPACE}'"
+
+	FOO_NO_SPACE="$(echo -e "${FOO_NO_TRAIL_SPACE}" | sed -e 's/^[[:space:]]*//')"
+	echo "${FOO_NO_SPACE}";
+	#echo -e "length(FOO_NO_TRAIL_SPACE)==$(echo -ne "${FOO_NO_SPACE}" | wc -m)"
+	# > length(FOO_NO_TRAIL_SPACE)==15
+}
+removenonalpha()
+{
+	non="$(echo  "$1" | sed -e 's/[^a-zA-Z|0-9| |:_\-]//g' )";
+	echo "$non"
+}
+
+
 name="${1##*/}";
 path="${1%/*}";
-f1="$path/$(echo "$name" | sed -e 's/[^a-zA-Z0-9\/.]//g')";
-mv "$1" "$f1";
+
 metapath="$2";
-name="${f1##*/}";
-p="$(echo "${name:0:2}" | sed -e 's/[^._]//g')";
 
-if  [  -n "$p"  ]; then
 	
-	echo "........ bad file name $name .......";
+echo "extracting meta data from ..................."$f1"........................";
+	
+temp=$(exiftool -title "$1");
+title="$(removenonalpha "$(removespace "${temp##*:}")")";
+
+temp=$(exiftool -artist "$1") ;
+artist="$(removespace "${temp##*:}")";
+
+temp=$(exiftool -album "$1") ;
+album="$(removespace "${temp##*:}")";
+
+temp=$(exiftool -genre "$1") ;
+genre="$(removespace "${temp##*:}")";
+
+temp=$(exiftool -date "$1") ;
+date="$(removespace "${temp##*:}")";
+
+temp=$(exiftool -year "$1") ;
+year="$(removespace "${temp##*:}")";
+
+echo	"$title $artist $album $genre $date $year $filetype" ;
+
+t="$(echo "$title" | tr -d '[[:space:]]')";
+ar="$(echo "$artist" | tr -d '[[:space:]]')";
+g="$(echo "$genre" | tr -d '[[:space:]]')";
+
+filename="$ar-$t.mp3";
+
+
+if [  -z "$t"  -a  -z "$ar"  ] ; then
+
+	echo "metadata unavailable exiting ........"
 else
+	echo "writing .... in $metapath$filename ...";
+	writeffmpeg "$1";
 	
-	echo "extracting meta data from ..................."$f1"........................";
-	
-	
-	title="$(exiftool "$f1" 2>&1 | grep '^title: ' | sed 's/^title: //')";
-	
-	artist="$(exiftool "$f1" 2>&1 | grep '^artist: ' | sed 's/^artist: //')";
-	album="$(exiftool "$f1"  2>&1 | grep '^album: ' | sed 's/^album: //')";
-	
-	genre="$(exiftool "$f1" 2>&1 | grep '^genre: ' | sed 's/^genre: //' | tr -d '[[:space:]]')";
-	
-	date="$(exiftool "$f1" 2>&1 | grep '^date: ' | sed 's/^date: //')";
-	
-	year="$(exiftool "$f1" 2>&1 | grep '^year: ' | sed 's/^year: //')";
-	
-	filetype="$(exiftool "$f1" 2>&1 | grep '^filetype: ' | sed 's/^filetype: //')";
-	
-	echo	"metadata $title $artist $album $genre $date $year $filetype" ;
-	
-	filename="$(echo "$artist" | sed -e 's/[^a-zA-Z0-9]//g')-$(echo "$title" | sed -e 's/[^a-zA-Z0-9]//g').mp3";
-
-	
-	#echo	"$title $artist $album $genre $date $year $filetype" ;
-	
-	filename="$(echo "$artist" | sed -e 's/[^a-zA-Z0-9]//g')-$(echo "$title" | sed -e 's/[^a-zA-Z0-9]//g').mp3";
-
-	if [ -z "$title" ] ; then
-		if [ -z "$artist" ] ; then 
-			name="${f1##*/}";
-			filename="$(echo "${name%.*}" | sed -e 's/[^a-zA-Z0-9]//g').mp3";
-		fi
-	fi
-
-	if [ -f "$metapath$filename" ] ; then 
-		echo  ">>>>>>>>>>>>>>>>>>>>>>file $filename already exists in $metapath";
-		echo "removing orgional file $f1";
-		rm "$f1";
-		
-	
-	else
-		
-		writeffmpeg "$metapath";
-	fi
-
-
 fi
 
-rm "$f1"
-rm "$1"
+
+
+
 

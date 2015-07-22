@@ -1,8 +1,0 @@
-;FFMETADATA1
-Title= 
-Artist= 
-Album= 
-Genre= 
-Date= 
-Year= 
-FileType= 

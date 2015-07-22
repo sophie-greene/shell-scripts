@@ -1,8 +1,0 @@
-;FFMETADATA1
-Title=  Oh My Love
-Artist=  John Lennon
-Album=  Imagine
-Genre= 
-Date= 
-Year=  1971-09-09
-FileType=  1971-09-09

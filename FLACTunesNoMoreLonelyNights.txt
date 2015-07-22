@@ -1,8 +1,0 @@
-;FFMETADATA1
-Title=  No More Lonely Nights
-Artist=  Paul McCartney
-Album=  Hits and History
-Genre= 
-Date= 
-Year=  2001-05-04
-FileType=  2001-05-04
