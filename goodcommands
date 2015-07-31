@@ -6,3 +6,7 @@ ffmpeg -framerate 1 -pattern_type glob -i '*.png' -i ~/william.mp3 -c:v mpeg4 -v
 #40min=2400sec
 ffmpeg -t 2400.000 -f concat -i concat.txt -c copy -t 2400.000 william.mp3
 
+sudo usermod -a -G vboxsf some
+dpkg -r qt-faststart
+#above for unistalling ffmpeg
+#find and rename \n find /media/sf_ubuntu/Music/ -iname *.mp3 -exec bash -c 'mv bash /media/sf_ubuntu/Music/bash' {} \;
