@@ -1,20 +1,20 @@
 #!/bin/bash
 
 d=0;
-
-find /media/sf_ubuntu/ -name *.mp3 |
-while
- read filename;
+path="/media/sf_ubuntu/Music/"
+cd "$path"
+for filename in *.mp3
 do
 	ext="${filename##*.}";
-	name="${filename%.*}";
+	name="$(basename $filename)";
+	name="$(echo ${name%*.mp3})"
 #echo "$name"
 	FILE="$name.m4a";
 
 	if [ -f "$FILE" ] ; then 
 		let d+=1; 
-		echo "$d-$FILE";
-		rm "$FILE";
+		echo "$d-$FILE******$filename";
+		rm -r "$path$filename";
 	fi
 
     	#echo "name=$name";
