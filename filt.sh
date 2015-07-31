@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path=/media/mira/26CA0E3FCA0E0BAD/Music/
+path=/media/
 cd "$path"
 for FILE in *
 do
