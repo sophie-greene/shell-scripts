@@ -1,0 +1,8 @@
+ffmpeg -i input.avi -c:v mpeg4 -vtag xvid output.avi
+ffmpeg -framerate 1 -pattern_type glob -i '*.jpg' -c:v libx264 out.mp4
+ffmpeg -loop 1 -i img.jpg -i audio.m4a -c:v libx264 -c:a copy -shortest out.mp4
+
+ffmpeg -framerate 1 -pattern_type glob -i '*.png' -i ~/william.mp3 -c:v mpeg4 -vtag xvid -c:a copy -shortest william.avi
+#40min=2400sec
+ffmpeg -t 2400.000 -f concat -i concat.txt -c copy -t 2400.000 william.mp3
+
