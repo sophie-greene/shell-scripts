@@ -11,23 +11,38 @@ killpro(){
 #: ||{
 
 declare -a list=();
+declare -a listm=();
 curr="$(pwd)";
-cd /media/sf_ubuntu/Music
+cd /media/sf_ubuntu/final
 for f in *.mp3
 	do
-		list=("${list[@]}" "/media/sf_ubuntu/Music/$f");
+		list=("${list[@]}" "/media/sf_ubuntu/final/$f");
+done
+for fm in *.m4a
+	do
+		listm=("${listm[@]}" "/media/sf_ubuntu/final/$fm");
 done
 cd "$curr"
+let lenm=${#listm[@]};
+
+for (( im=0; im<$lenm; im=$im+8));
+do 
+let sm=$im+7
+echo "$im $sm"
+	
+	parallel -j8 ./m4aM.sh ::: ${listm[@]:$im:$sm} &
+done
 let len=${#list[@]};
 
-for (( i=0; i<$len; i=i+20));
+for (( i=0; i<$len; i=$i+20));
 do 
 let s=$i+19
-echo "$i $s"
+echo "********************$i $s"
 	parallel -j8 ./mp3M.sh ::: ${list[@]:$i:$s} &
 	
 done
-echo "$len"
+
+echo "$len***** $lenm"
 #for s in  {z..a}
 #do
 #for m in  {0..9}

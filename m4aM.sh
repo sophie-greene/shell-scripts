@@ -14,14 +14,16 @@ removespace (){
 	# > length(FOO_NO_TRAIL_SPACE)==15
 }
 name="$(basename "$1")";
-:||{
+#:||{
 patho="$(echo "${1%/*}")";
-tempn="/home/some/temp/${name%*.m4a}.m4a";
-path="/media/sf_ubuntu/final/";
-metaorig="/home/some/temp/${name%*.m4a}a.or"
-metanew="/home/some/temp/${name%*.m4a}a.ne"
+d="$(date +%H%M%S)";
+tempn="/home/some/temp/${name%*.m4a}$d.m4a";
+path="/media/sf_ubuntu/m4a/";
+metaorig="/home/some/temp/${name%*.m4a}$d.or"
+metanew="/home/some/temp/${name%*.m4a}$d.ne"
 #exiftool -j "$temp"  | sed -e 's/[}]]//g' | sed -e 's/[[{]//g' >data.txt;
 ffmpeg -loglevel panic  -i "$1" -f  ffmetadata "$metaorig";
+if [ -f "$metaorig" ] ; then
 echo ";FFMETADATA1">"$metanew";
 IFS="="
 while read f1 f2
@@ -49,36 +51,42 @@ do :
 	esac
 	
 done <"$metaorig"
-rm "$metaorig"
+
 
 echo "TENC=Sophie Greene">>"$metanew";
 echo	"************** title=$title artist=$artist $album $genre $ddate $year" ;
 t="$(echo "$title"| sed -e 's/[^a-zA-Z0-9]//g'| tr -d '[[:space:]]')";
 ar="$(echo "$artist" | sed -e 's/[^a-zA-Z0-9]//g' | tr -d '[[:space:]]')";
 #al="$(echo "$album" | sed -e 's/[^a-zA-Z0-9]//g'| tr -d '[[:space:]]')";
+
 if [ -z "$t" -a -z "$ar" ] ; then
-filename="$name";
+	echo "no valid metadata exiting ....$name";
 else
 
-filename="$ar-$t.m4a";
-fi
-echo "$filename"
+	filename="$ar-$t.m4a";
+
+	echo "$filename"
 
 
-if [ -f "$path$filename" ] ; then 
-	echo ">>>>>>>>>>>>>>>>>>>>>> file $filename already exists in $path"
+	if [ -f "$path$filename" ] ; then 
+		echo ">>>>>>>>>>>>>>>>>>>>>> file $filename already exists in $path"
 
-	echo "removing .........$1"
-	rm "$1"
-		#mv "$1" "/media/sf_ubuntu/proc/$name";
+		echo "removing .........$1"
+		rm "$1"
+			#mv "$1" "/media/sf_ubuntu/proc/$name";
 		
-else
-	ffmpeg -loglevel panic  -i "$1" -map_metadata -1 -map 0:0 -c:a copy -id3v2_version 3  "$tempn" -y ;
-	ffmpeg -loglevel panic -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy  -id3v2_version 3 -write_id3v1 1 "$path$filename" -y ;
-rm "$tempn"; 
+	else
+		ffmpeg -loglevel panic  -i "$1" -map_metadata -1 -map 0:0 -c:a copy -id3v2_version 3  "$tempn" -y ;
+		ffmpeg -loglevel panic -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy  -id3v2_version 3 -write_id3v1 1 "$path$filename" -y ;
+	rm "$tempn"; 
 
 	
 	
+	fi
+	rm "$metaorig"
+	rm   "$metanew";
 fi
-rm   "$metanew";
-}
+else
+echo "no valid metadata exiting ....********************";
+fi
+#}
