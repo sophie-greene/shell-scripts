@@ -1,6 +1,6 @@
 #!/bin/bash
 killpro(){
-	pgrep find >txt
+	pgrep perl >txt
 
 	while read f
 	do 
@@ -9,15 +9,34 @@ killpro(){
 }
 #killpro;
 #: ||{
+
+declare -a list=();
+curr="$(pwd)";
+cd /media/sf_ubuntu/Music
+for f in *.mp3
+	do
+		list=("${list[@]}" "/media/sf_ubuntu/Music/$f");
+done
+cd "$curr"
+let len=${#list[@]};
+
+for (( i=0; i<$len; i=i+20));
+do 
+let s=$i+19
+echo "$i $s"
+	parallel -j8 ./mp3M.sh ::: ${list[@]:$i:$s} &
+	
+done
+echo "$len"
 #for s in  {z..a}
 #do
-	#for m in  {0..9}
+#for m in  {0..9}
 	#do
 	#let s=10*(s+1);
-		find /media/mira/26CA0E3FCA0E0BAD/Music -iname "$m*.m4a" | head -50 | parallel -j8 ./mp3M.sh 
+		#
 		#-exec bash -c './mp3M.sh "$0" "/media/sf_ubuntu/final1/";' ' {} \;&
 		#./mp3M.sh "/media/sf_ubuntu/sophf/$s*" "/media/sf_ubuntu/final/";
 		#echo "$m$s";
-	#done
+#done
 #done
 #}

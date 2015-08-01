@@ -14,14 +14,14 @@ removespace (){
 	# > length(FOO_NO_TRAIL_SPACE)==15
 }
 name="$(basename "$1")";
-: ||{
+:||{
 patho="$(echo "${1%/*}")";
-tempn="/home/some/tempm/${name%*.mp3}.mp3";
+tempn="/home/some/temp/${name%*.m4a}.m4a";
 path="/media/sf_ubuntu/final/";
-metaorig="/home/some/tempm/${name%*.mp3}.or"
-metanew="/home/some/tempm/${name%*.mp3}.ne"
+metaorig="/home/some/temp/${name%*.m4a}a.or"
+metanew="/home/some/temp/${name%*.m4a}a.ne"
 #exiftool -j "$temp"  | sed -e 's/[}]]//g' | sed -e 's/[[{]//g' >data.txt;
-ffmpeg -loglevel panic -i "$1" -f  ffmetadata "$metaorig";
+ffmpeg -loglevel panic  -i "$1" -f  ffmetadata "$metaorig";
 echo ";FFMETADATA1">"$metanew";
 IFS="="
 while read f1 f2
@@ -60,7 +60,7 @@ if [ -z "$t" -a -z "$ar" ] ; then
 filename="$name";
 else
 
-filename="$ar-$t.mp3";
+filename="$ar-$t.m4a";
 fi
 echo "$filename"
 
@@ -69,11 +69,11 @@ if [ -f "$path$filename" ] ; then
 	echo ">>>>>>>>>>>>>>>>>>>>>> file $filename already exists in $path"
 
 	echo "removing .........$1"
-rm "$1"
+	rm "$1"
 		#mv "$1" "/media/sf_ubuntu/proc/$name";
 		
 else
-	ffmpeg -loglevel panic  -i "$1" -map_metadata -1 -map 0:0 -c:a copy -id3v2_version 3 -f mp3 "$tempn" -y ;
+	ffmpeg -loglevel panic  -i "$1" -map_metadata -1 -map 0:0 -c:a copy -id3v2_version 3  "$tempn" -y ;
 	ffmpeg -loglevel panic -i "$tempn" -i "$metanew" -map_metadata 1 -map 0:0 -c:a copy  -id3v2_version 3 -write_id3v1 1 "$path$filename" -y ;
 rm "$tempn"; 
 
