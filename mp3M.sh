@@ -71,7 +71,7 @@ else
 		echo ">>>>>>>>>>>>>>>>>>>>>> file $filename already exists in $path"
 
 		echo "removing .........$1"
-	rm "$1"
+	#rm "$1"
 			#mv "$1" "/media/sf_ubuntu/proc/$name";
 		
 	else

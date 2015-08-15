@@ -5,19 +5,31 @@ export var="$1"
 function jdata() {
 PYTHON_ARG="$1" python - <<END
 
-import os
-import json
-import xml.etree.ElementTree as etree  
+import sys
 
-name = os.environ["var"]
+MSGS = ("---  11 secret messages  ---")
 
-tree = etree.parse(name) 
-root=tree.getroot()  
-print len(root)   
+def strxor(a, b):     # xor two strings of different lengths
+	if len(a) > len(b):
+		return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a[:len(b)], b)])
+	else:
+		return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b[:len(a)])])
 
-for child in root: d=child
-root.attrib      
-root.findall(d)
+def random(size=16):
+	l=open("/dev/urandom").read(size)
+	print "some %s."%l
+	return open("/dev/urandom").read(size)
+
+def encrypt(key, msg):
+	c = strxor(key, msg)
+	print "msg %s."%msg
+	print "c.encode %s."%c.encode('hex')
+	return c
+
+def main():
+	key = random(1024)
+	ciphertexts = [encrypt(key, msg) for msg in MSGS]
+	echo "key %s." % key
 END
 }
 

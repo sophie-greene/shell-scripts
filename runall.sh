@@ -25,9 +25,9 @@ done
 cd "$curr"
 let lenm=${#listm[@]};
 
-for (( im=0; im<$lenm; im=$im+8));
+for (( im=0; im<$lenm; im=$im+20));
 do 
-let sm=$im+7
+let sm=$im+19
 echo "$im $sm"
 	
 	parallel -j8 ./m4aM.sh ::: ${listm[@]:$im:$sm} &
